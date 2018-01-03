@@ -26,7 +26,7 @@ var _utilsCompareProps = require('../utils/compare-props');
 
 var _utilsCompareProps2 = _interopRequireDefault(_utilsCompareProps);
 
-exports['default'] = function (name, latLngProp, events) {
+exports['default'] = function (name, latLngProp, events, pathEvents) {
   return (0, _createReactClass2['default'])({
 
     mixins: [_mixinsListener2['default']],
@@ -37,6 +37,7 @@ exports['default'] = function (name, latLngProp, events) {
       var options = this.getOptions(this.props);
       this.entity = new google.maps[name](options);
       this.addListeners(this.entity, events);
+      this.addPathListeners(this.entity, pathEvents);
     },
 
     componentWillReceiveProps: function componentWillReceiveProps(nextProps) {

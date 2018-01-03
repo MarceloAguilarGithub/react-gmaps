@@ -19,6 +19,17 @@ var Listener = {
     }
   },
 
+  addPathListeners: function addPathListeners(entity, events) {
+    var _this = this;
+
+    if (events) {
+      var paths = entity.getPaths();
+      paths.forEach(function (path) {
+        _this.addListeners(path, events);
+      });
+    }
+  },
+
   removeListeners: function removeListeners() {
     if (window.google && this.listeners) {
       this.listeners.forEach(function (listener) {
