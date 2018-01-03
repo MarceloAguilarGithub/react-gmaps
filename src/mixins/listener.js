@@ -14,6 +14,15 @@ const Listener = {
     }
   },
 
+  addPathListeners(entity, events) {
+    if(events) {
+      let paths = entity.getPaths();
+      paths.forEach((path) => {
+        this.addListeners(path, events);
+      });
+    }
+  },
+
   removeListeners() {
     if (window.google && this.listeners) {
       this.listeners.forEach((listener) => {

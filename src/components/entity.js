@@ -3,7 +3,7 @@ import createReactClass from 'create-react-class';
 import Listener from '../mixins/listener';
 import compareProps from '../utils/compare-props';
 
-export default (name, latLngProp, events) => {
+export default (name, latLngProp, events, pathEvents) => {
   return createReactClass({
 
     mixins: [Listener],
@@ -14,6 +14,7 @@ export default (name, latLngProp, events) => {
       const options = this.getOptions(this.props);
       this.entity = new google.maps[name](options);
       this.addListeners(this.entity, events);
+      this.addPathListeners(this.entity, pathEvents);
     },
 
     componentWillReceiveProps(nextProps) {
